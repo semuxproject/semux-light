@@ -1,64 +1,23 @@
 
-# Semux Light
+# Semux Web Wallet
 
-The Semux Light Mainnet client is here: https://wallet.semux.info
+The Semux Web Mainnet client is here: https://wallet.semux.info 
 
-You can also:
-- build and deploy the semux-light-server and semux-light-front yourself (see below), or
-- download the semux-light-front package from "Release" tab, unzip, open `index.html` and it will use my backend hosted at semux.online server.
+It is using public API server from here: https://api.semux.info (endpoint hardcoded in `src/main/lib/api.ts`)
 
 ---
 
 ![semux-light](https://github.com/semuxproject/semux-light/raw/assets/semux-light-testnet.png)
 
-## Try it yourself:
+## Running locally:
 
-- You must have a Semux node running with API enabled
-
-  `semux/config/semux.properties`
-  ```
-  […]
-  #================
-  # API
-  #================
-
-  # Be sure to set up authentication first before enabling API
-  api.enabled = true
-
-  # Listening address and port
-  api.listenIp = 127.0.0.1
-  api.listenPort = 5171
-
-  # Basic authentication
-  api.username = user
-  api.password = 123456
-  […]
-
-  ```
 
 - git clone and build Semux Light
     ```
-    $ git clone https://github.com/witoldsz/semux-light.git
+    $ git clone https://github.com/semuxproject/semux-light.git
     $ cd semux-light
     $ make clean build
     ```
 
-- adjust ./start.sh and launch it
-    ```
-    $ cat start.sh
-    […]
-    export SEMUX_API_ADDR=http://127.0.0.1:5171
-    export SEMUX_API_USER=user
-    export SEMUX_API_USER=123456
-
-    export SEMUX_LIGHT_PORT=8080
-    export SEMUX_LIGHT_BIND_IP=127.0.0.1
-    […]
-
-    $ ./start.sh
-    node build/app.js
-    server listening: { address: '127.0.0.1', family: 'IPv4', port: 8080 }
-
-    ```
-
-- open browser location: http://localhost:8080
+- open in browser `build/index.html` file
+- if you want to use your own API server, modify endpoint in `src/main/lib/api.ts` and re-build the project
