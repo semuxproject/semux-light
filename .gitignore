@@ -4,3 +4,4 @@ build
 start.sh
 
 .vscode
+.DS_Store

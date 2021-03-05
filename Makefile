@@ -1,22 +1,27 @@
+SHELL=/bin/bash
+export PATH := node_modules/.bin:$(PATH)
+
 .PHONY: build
-build:
-	@cd front && make build
-	@cd server && make build
-	@test -f start.sh || cp _start.sh start.sh && chmod 700 start.sh
-	@echo
-	@echo adjust ./start.sh and launch it
-	@echo
+build: build/COMPILED build/DOCROOT
 
 .PHONY: clean
 clean:
-	@cd front && make clean
-	@cd server && make clean
-	rm -rf dist
+	rm -rf dist build
 
-dist: $(shell find front/build -type f)
-	rm -rf dist
-	mkdir dist
-	$(eval TIME := $(shell date '+%Y-%m-%d_%H-%M'))
-	$(eval NAME := semux-light-${TIME})
-	cp -R front/build dist/${NAME}
-	cd dist && zip -rm9 ${NAME} ${NAME}
+.PHONY: compile-watch
+compile-watch: build/DOCROOT
+	webpack --watch
+
+node_modules/INSTALLED: package.json
+	npm install
+	touch $@
+
+build/COMPILED: node_modules/INSTALLED $(shell find src/main -type f)
+	./node_modules/.bin/eslint ./src
+	./node_modules/.bin/webpack
+	touch $@
+
+build/DOCROOT: $(shell find src/docroot -type f)
+	mkdir -p build
+	cp -rf src/docroot/* build
+	touch $@
