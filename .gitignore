@@ -1,7 +1,6 @@
 node_modules
 dist
 build
-start.sh
 
 .vscode
 .DS_Store

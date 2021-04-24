@@ -1,23 +1,32 @@
 
 # Semux Web Wallet
 
-The Semux Web Mainnet client is here: https://wallet.semux.info 
+This is the source code of Semux Web Wallet, which allows you to interact with Semux Network without installation.
 
-It is using public API server from here: https://api.semux.info (endpoint hardcoded in `src/main/lib/api.ts`)
+## Building from source
 
----
+Pre-requisite:
+- Node.js 12
+- NPM
 
-![semux-light](https://github.com/semuxproject/semux-light/raw/assets/semux-light-testnet.png)
+Build:
+```
+git clone https://github.com/semuxproject/semux-web-wallet.git
+cd semux-web-wallet
+make clean build
+```
 
-## Running locally:
+Run
+```
+sudo npm install http-server -g
+http-server -p 8080 build
+```
 
+## Trying it out
 
-- git clone and build Semux Light
-    ```
-    $ git clone https://github.com/semuxproject/semux-light.git
-    $ cd semux-light
-    $ make clean build
-    ```
+You can also access Semux Web Wallet from the following sites:
+- https://wallet.semux.info
 
-- open in browser `build/index.html` file
-- if you want to use your own API server, modify endpoint in `src/main/lib/api.ts` and re-build the project
+## License
+
+This package is licensed under [ISC](./LICENSE)
