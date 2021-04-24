@@ -25,6 +25,7 @@ http-server -p 8080 build
 ## Trying it out
 
 You can also access Semux Web Wallet from the following sites:
+- https://www.semux.org/wallet/
 - https://wallet.semux.info
 
 ## License
