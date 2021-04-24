@@ -1,4 +1,5 @@
 import { app, h } from 'hyperapp'
+import { apiEndpoint } from './lib/api'
 import {
   LocationActions, LocationState, Route, locationSubscribe, rawLocationActions, parseLocation,
 } from './lib/location'
@@ -79,9 +80,9 @@ const rawActions: Actions = {
 
 const view = (state: State, actions: Actions) => (
   <div class="overflow-x-hidden">
-    <div class="tc bg-yellow">
+    <div class="pa2 tc bg-yellow">
       {successOf(state.info)
-        .fmap((i) => `Network: ${i.network}`)
+        .fmap((i) => `API: ${apiEndpoint}, Network: ${i.network}`)
         .valueOr('')
       }
     </div>

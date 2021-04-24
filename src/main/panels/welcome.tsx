@@ -147,7 +147,7 @@ function actionsView(rootState: State, rootActions: Actions) {
             document.getElementById('load')!.click()
           }}
         />
-        {' '}Load wallet from a backup file
+        {' '}Open wallet from backup file
     </label>
       <input class="clip" type="file" id="load" />
     </div>
@@ -160,7 +160,7 @@ function actionsView(rootState: State, rootActions: Actions) {
           checked={state.selected === 'CreateAction'}
           onclick={() => actions.setSelected('CreateAction')}
         />
-        {' '}Create a new wallet
+        {' '}Create a new wallet, with option to import private key
     </label>
     </div>
 

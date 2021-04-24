@@ -6,8 +6,8 @@ This is the source code of Semux Web Wallet, which allows you to interact with S
 ## Building from source
 
 Pre-requisite:
-- Node.js 12
-- NPM
+- Node.js 10 or above
+- npm
 
 Build:
 ```
