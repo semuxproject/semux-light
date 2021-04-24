@@ -14,7 +14,6 @@ import { ReceiveActions, ReceiveState, ReceiveView, initialReceiveState, rawRece
 import { SendActions, SendState, SendView, initialSendState, rawSendActions } from './panels/send'
 import { TransactionsView, TxsActions, TxsState, initialTxsState, rawTxsActions } from './panels/transactions'
 import { WelcomeActions, WelcomeState, WelcomeView, initialWelcomeState, rawWelcomeActions } from './panels/welcome'
-import { GithubRibbon } from './lib/github-ribbon'
 
 export interface State {
   location: LocationState
@@ -80,13 +79,12 @@ const rawActions: Actions = {
 
 const view = (state: State, actions: Actions) => (
   <div class="overflow-x-hidden">
-    <GithubRibbon />
-    <p class="tc bg-yellow">
+    <div class="tc bg-yellow">
       {successOf(state.info)
         .fmap((i) => `Network: ${i.network}`)
         .valueOr('')
       }
-    </p>
+    </div>
     <p class="pa2 dark-red">{failureOf(state.info)}</p>
     {isLoading(state.info) && <p class="tc pa3">Please wait</p>}
     {isSuccess(state.info) && (
@@ -94,7 +92,7 @@ const view = (state: State, actions: Actions) => (
         ? <WelcomeView />
         :
         <div class="overflow-x-hidden">
-          <h1 class="pa2">Semux Light</h1>
+          <h1 class="pa2">Semux Web Wallet</h1>
           <NavView />
           <Route path={Nav.Home} render={HomeView} />
           <Route path={Nav.Send} render={SendView} />

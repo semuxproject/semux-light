@@ -16,7 +16,7 @@ export interface AccountVoteType {
 }
 
 export async function fetchVotes(address: string): Promise<AccountVoteType[]> {
-  const path = `/v2.1.0/account/votes?address=${address}`
+  const path = `/account/votes?address=${address}`
   const remotes = await exec<AccountVoteTypeRemote[]>('GET', path)
   return remotes.map((r) => ({
     address,

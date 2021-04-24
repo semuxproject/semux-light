@@ -63,11 +63,11 @@ export function caseTypeOf<T>(tx: TransactionType, otherwise: T, casePattern: Tr
 
 export function publishTx(tx: Transaction): Promise<undefined> {
   const encodedTx = Buffer.from(tx.toBytes().buffer).toString('hex')
-  return exec('POST', `/v2.1.0/transaction/raw?raw=${encodedTx}`)
+  return exec('GET', `/broadcast-raw-transaction?raw=${encodedTx}`)
 }
 
 export async function fetchTxs(address: string, from: number, to: number): Promise<TransactionType[]> {
-  const path = `/v2.1.0/account/transactions?address=${address}&from=${from}&to=${to}`
+  const path = `/account/transactions?address=${address}&from=${from}&to=${to}`
   const remotes = to > from ? await exec<TransactionTypeRemote[]>('GET', path) : []
   return mutableReverse(remotes.map((r, idx) => ({
     blockNumber: r.blockNumber,
@@ -84,7 +84,7 @@ export async function fetchTxs(address: string, from: number, to: number): Promi
 }
 
 export async function fetchPendingTxs(address: string): Promise<TransactionType[]> {
-  const path = `/v2.1.0/account/pending-transactions?address=${address}&from=0&to=999`
+  const path = `/account/pending-transactions?address=${address}&from=0&to=999`
   const remotes = await exec<PendingTransactionTypeRemote[]>('GET', path)
   return mutableReverse(remotes.map((r, idx) => ({
     blockNumber: undefined,

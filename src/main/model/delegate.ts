@@ -26,7 +26,7 @@ export interface DelegateType {
 }
 
 export async function fetchDelegates(): Promise<DelegateType[]> {
-  const path = '/v2.1.0/delegates'
+  const path = '/delegates'
   const remotes = (await exec<DelegateTypeRemote[]>('GET', path)).sort(compareDelegates)
   return remotes.map((r, rank_) => {
     const turnsHit = parseInt(r.turnsHit, 10)

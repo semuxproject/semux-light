@@ -13,7 +13,7 @@ export interface InfoType {
 
 export async function fetchInfo(): Promise<InfoState> {
   try {
-    return Success(await exec<InfoType>('GET', `/v2.1.0/info`))
+    return Success(await exec<InfoType>('GET', `/info`))
   } catch (e) {
     return Failure(e.message)
   }

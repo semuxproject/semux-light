@@ -132,7 +132,9 @@ function actionsView(rootState: State, rootActions: Actions) {
   const actions = rootActions.welcome
   const state = rootState.welcome
   return <div class="pa3">
-    <h1>Welcome to the Semux Light!</h1>
+    <h1>Semux Web Wallet</h1>
+
+    <p>Thanks for using Semux Web Wallet. To get started, please select one of the following options:</p>
 
     <div class="mv2">
       <label>
@@ -145,7 +147,7 @@ function actionsView(rootState: State, rootActions: Actions) {
             document.getElementById('load')!.click()
           }}
         />
-        {' '}Load wallet from file
+        {' '}Load wallet from a backup file
     </label>
       <input class="clip" type="file" id="load" />
     </div>
@@ -158,7 +160,7 @@ function actionsView(rootState: State, rootActions: Actions) {
           checked={state.selected === 'CreateAction'}
           onclick={() => actions.setSelected('CreateAction')}
         />
-        {' '}Create new wallet file
+        {' '}Create a new wallet
     </label>
     </div>
 
@@ -260,7 +262,7 @@ function newWalletView(state: WelcomeState, wallet: Wallet, actions: WelcomeActi
         <li>The <b>wallet + password = full access</b> to your funds.</li>
         <li>Keep you wallet and password safe, but <b>not together</b>.</li>
         <li>If your password is easy to guess and wallet easy to get: your funds are not safe.</li>
-        <li>Semux Light <b>never</b> sends wallet and/or passwords over the wire. Ever.</li>
+        <li>Semux Web Wallet <b>never</b> sends wallet and/or passwords over the wire. Ever.</li>
       </ul>
 
       <p>Now, save your{' '}
